@@ -1,5 +1,6 @@
 # ESP32 OTA Bootloader: fail-safe firmware updates
 
+[![CI](https://github.com/nesssrine/esp32-ota-bootloader/actions/workflows/ci.yml/badge.svg)](https://github.com/nesssrine/esp32-ota-bootloader/actions/workflows/ci.yml)
 ![Language](https://img.shields.io/badge/language-C-blue)
 ![Framework](https://img.shields.io/badge/ESP--IDF-v5.1-red)
 ![Target](https://img.shields.io/badge/target-ESP32--WROOM--32-green)
