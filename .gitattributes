@@ -1,0 +1,4 @@
+# Normalise line endings so the repo builds the same on Windows and Linux CI
+* text=auto eol=lf
+*.bat text eol=crlf
+*.bin binary
