@@ -1,0 +1,56 @@
+menu "UART Updater"
+
+    config UPDATER_UART_PORT_NUM
+        int "UART port used to receive firmware"
+        range 0 2
+        default 0
+        help
+            UART0 is the USB port of the DevKit (no extra hardware needed,
+            log output is muted during a transfer). Use UART1/UART2 with an
+            external USB-serial adapter to keep logs and updates separate.
+
+    config UPDATER_UART_BAUD_RATE
+        int "Baud rate"
+        default 115200
+        help
+            When the updater shares UART0 with the console, keep the same
+            baud rate as the console (115200 by default).
+
+    config UPDATER_UART_TX_PIN
+        int "TX pin (-1 = keep default pin)"
+        range -1 39
+        default -1 if UPDATER_UART_PORT_NUM = 0
+        default 17
+
+    config UPDATER_UART_RX_PIN
+        int "RX pin (-1 = keep default pin)"
+        range -1 39
+        default -1 if UPDATER_UART_PORT_NUM = 0
+        default 16
+
+endmenu
+
+menu "Demo Application"
+
+    config DEMO_LED_GPIO
+        int "Status LED GPIO"
+        range 0 33
+        default 2
+        help
+            Most "ESP32 DevKit V1" boards have a blue LED on GPIO2.
+
+    config DEMO_BLINK_PERIOD_MS
+        int "LED blink period (ms)"
+        range 100 10000
+        default 1000
+        help
+            Change this between two builds to see which firmware is running.
+
+    config DEMO_SIMULATE_BROKEN_FIRMWARE
+        bool "Simulate a broken firmware (self-test fails)"
+        default n
+        help
+            The image fails its post-update self-test, so it is marked invalid
+            and the device automatically rolls back to the previous firmware.
+
+endmenu

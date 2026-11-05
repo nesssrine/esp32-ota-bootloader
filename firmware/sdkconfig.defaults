@@ -1,0 +1,12 @@
+CONFIG_IDF_TARGET="esp32"
+
+# ESP32-WROOM-32 module: 4 MB flash
+CONFIG_ESPTOOLPY_FLASHSIZE_4MB=y
+
+# Custom partition table: factory + two OTA slots (A/B)
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions.csv"
+
+# A freshly updated image boots in PENDING_VERIFY state and must confirm
+# itself, otherwise the 2nd stage bootloader rolls back to the previous one.
+CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE=y
